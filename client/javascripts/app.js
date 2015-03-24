@@ -68,9 +68,9 @@ function main(){
     // //Prepares and return a tweet html object
     function createTweetHTML(text){
         var $tweet = $("<div>").addClass("tweet-obj"),
-            $text = $("<span>").text(text),
-            $upvote = $("<button>Yes</button>"),        
-            $downvote = $("<button>No</button>");
+            $text = $("<span><table><tr><td>").text(text),
+            $upvote = $("</td><td><button>Yes</button></td>"),        
+            $downvote = $("<td><button>No</button></td></tr></table>");
 
         //initialize buttons
         $upvote.click(upvoteClick);

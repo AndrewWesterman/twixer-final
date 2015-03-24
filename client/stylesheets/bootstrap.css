@@ -120,6 +120,7 @@ textarea {
 }
 button {
   overflow: visible;
+  margin-left: 5px ;
 }
 button,
 select {
