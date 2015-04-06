@@ -1,34 +1,58 @@
-<!doctype html>
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico"> -->
+
     <title>Twixer | Login page</title>
-    <link href="stylesheets/reset.css" rel="stylesheet" type="text/css">
-    <link href="stylesheets/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-</head>
-<body background="images/bg.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/signin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body background="images/bg.png">
+
+
   <header>
-  	<div class="container">
-  	<h1>Twixer!</h1>
-        <nav>
-          <!-- <p>... is using the twitcher API. You can look <a href="http://twitcher.steer.me"> here</a> for more information about it.</p> -->
-        </nav>
-      </div>
+    <div class="container">
+      <h1>Welcome to Twixer!</h1>
+    </div>
   </header>
 
-  <main>
-  <h3>Please login using one of the login buttons below.</h3>
-    <div class="btn-group" role="group" aria-label="...">
-    <button class="btn btn-default btn-group-l" id="acct1">Account 1</button>
-    <button class="btn btn-default btn-group-l" id="acct2">Account 2</button>
-    <button class="btn btn-default btn-group-l" id="acct3">Account 3</button>
-    </div>
-   </main>
+    <div class="container">
 
+      <div class="form-signin" id="twiter_login">
+        <h2 class="form-signin-heading">Please sign in.</span></h2>
+        <input id="inputEmail" class="form-control"></input>
+        <input id="inputPassword" class="form-control"></input>
+        <button id="login" class="btn btn-lg btn-primary btn-block">Sign In</button>
+        <!-- <label for="inputEmail" class="sr-only">Email address</label>
+        <input name="email" type="email"  id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="pwd" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" id="login">Sign in</button>
+        <a class="btn btn-lg btn-primary btn-block" href="/register">Register</a> -->
+      </div>
 
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="javascripts/login.js"></script>
-</body>
+    </div> <!-- /container -->
+  </body>
+
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <!--script src="js/app_twixer.js"></script-->
+  <!-- Bootstrap core js -->
+  <script src="/javascripts/bootstrap.js"></script>
+  <script src="/javascripts/login.js"></script>
 </html>

@@ -21,6 +21,16 @@ twixer.loadTweets(tweetList);
 var twitter = new Twitter(twitAuth);
 
 
+app.post("/login", function(req, res){
+    var loginInfo = req.body;
+    if(twixer.validAccount(loginInfo)){
+        currUsr = loginInfo.user;
+        res.redirect("/user.html");
+    } else {
+        res.send("Invalid login");
+    }
+});
+
 app.post("/user/:acct",function(req,res){
     currUsr = req.params.acct;
     console.log("Current user is: "+currUsr);

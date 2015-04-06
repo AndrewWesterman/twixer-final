@@ -18,6 +18,21 @@ function loadTweets(tweetList){
     });
 }
 
+function validAccount(loginInfo){
+    var user = loginInfo.user,
+        pass = loginInfo.pass,
+        valid = false,
+        i, acct;
+
+    for(i=0;i<=accts.length - 1;i++){
+        acct = accts[i];
+        if(acct.user === user && acct.pass === pass){
+            valid = true;
+        }
+    }
+    return valid;
+}
+
 //Creates tweet object and puts it in each users vote queue
 function createTweet(text){
     var tweet = {text: text},
@@ -131,6 +146,7 @@ function getTally(){
 module.exports = {
     loadAccounts: loadAccounts,
     loadTweets: loadTweets,
+    validAccount: validAccount,
     createTweet: createTweet, 
     getTweetsForAcct: getTweetsForAcct,
     processVote: processVote,
