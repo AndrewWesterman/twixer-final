@@ -4,17 +4,14 @@ function main(){
     var votes;
 
     var loadVotes = function(){
-        console.log("loading votes");
         $(".vote-queue").empty();
         $(".voted").empty();
         $(".tweets").empty();
-        
-        console.log("tweet");
+
         $.post("votes", function(res){
             var toVote = res.toVote,
                 voted = res.voted;
             toVote.forEach(function(tweet){
-                console.log("tweet");
                 $(".vote-queue").append(createTweetHTML(tweet.text));
             });
 
@@ -38,9 +35,15 @@ function main(){
 
     $("#submit").on("click", function(){
         var tweetText = $("#tweet").val();
-        console.log("submittal");
-        $.post("submit",{tweet: tweetText});
-        loadVotes();
+        if(tweetText.length > 140){
+            alert("Tweet must be no 140 characters or less");
+        } else if (tweetText === ""){
+            alert("Tweets cannot be empty");
+        } else {
+            $.post("submit",{tweet: tweetText});
+            loadVotes();
+        }
+        
     });
 
     //Event handler for yes votes

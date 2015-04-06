@@ -24,17 +24,12 @@ var twitter = new Twitter(twitAuth);
 app.post("/login", function(req, res){
     var loginInfo = req.body;
     if(twixer.validAccount(loginInfo)){
+        console.log("login success!");
         currUsr = loginInfo.user;
-        res.redirect("/user.html");
+        res.json({valid: true});
     } else {
-        res.send("Invalid login");
+        res.json({valid: false});
     }
-});
-
-app.post("/user/:acct",function(req,res){
-    currUsr = req.params.acct;
-    console.log("Current user is: "+currUsr);
-    res.send("user.html");
 });
 
 app.post("/user", function(req,res){
@@ -48,7 +43,6 @@ app.post("/submit", function(req,res){
 
 app.post("/votes", function(req,res){
     var votes = twixer.getTweetsForAcct(currUsr);
-    console.log(votes);
     res.json(votes);
 });
 

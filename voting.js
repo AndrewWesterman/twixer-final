@@ -43,7 +43,6 @@ function createTweet(text){
         });
     tweets.push(tweetBallot);
     console.log("Tweet submitted");
-    console.log(accts[0].toVote);
 }
 
 //returns the index of the tweet with the given text in the given array
@@ -61,14 +60,11 @@ function getIndexOfTweet(text, voteStack){
 //returns an object containing the vote queues for the given account
 function getTweetsForAcct(acctName){
     var voteQueues;
-    console.log("Attempting to get vote queues for "+acctName);
     accts.forEach(function(acct){
-        console.log(acct);
         if(acct.user === acctName){
             voteQueues = {toVote: acct.toVote, voted: acct.voted};
         }
     });
-    console.log(voteQueues);
     return voteQueues;
 }
 
