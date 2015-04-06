@@ -1,17 +1,22 @@
 
 
-var acct1 = {user: "acct1", pass: "pass1", voted: [], toVote: []},
-    acct2 = {user: "acct2", pass: "pass2", voted: [], toVote: []},
-    acct3 = {user: "acct3", pass: "pass3", voted: [], toVote: []},
-    accts = [],
+var accts = [],
     tweets = [],
     acctNum = 0;
 
-accts.push(acct1);
-accts.push(acct2);
-accts.push(acct3);
-createTweet("Hello");
-createTweet("Other tweet");
+function loadAccounts(acctList){
+    acctList.forEach(function(acct){
+        console.log("Loading account: "+acct.user);
+        accts.push(acct);
+    });
+}
+
+function loadTweets(tweetList){
+    tweetList.forEach(function(tweet){
+        console.log("Loading tweet: "+tweet);
+        createTweet(tweet);
+    });
+}
 
 //Creates tweet object and puts it in each users vote queue
 function createTweet(text){
@@ -23,6 +28,7 @@ function createTweet(text){
         });
     tweets.push(tweetBallot);
     console.log("Tweet submitted");
+    console.log(accts[0].toVote);
 }
 
 //returns the index of the tweet with the given text in the given array
@@ -40,11 +46,14 @@ function getIndexOfTweet(text, voteStack){
 //returns an object containing the vote queues for the given account
 function getTweetsForAcct(acctName){
     var voteQueues;
+    console.log("Attempting to get vote queues for "+acctName);
     accts.forEach(function(acct){
+        console.log(acct);
         if(acct.user === acctName){
             voteQueues = {toVote: acct.toVote, voted: acct.voted};
         }
     });
+    console.log(voteQueues);
     return voteQueues;
 }
 
@@ -120,6 +129,8 @@ function getTally(){
 }
 
 module.exports = {
+    loadAccounts: loadAccounts,
+    loadTweets: loadTweets,
     createTweet: createTweet, 
     getTweetsForAcct: getTweetsForAcct,
     processVote: processVote,

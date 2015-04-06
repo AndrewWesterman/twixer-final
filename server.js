@@ -7,12 +7,16 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     Twitter = require("twitter"),
     twitAuth = require("./twitterauth.json"),
+    accountList =  require("./accounts.json").accounts,
+    tweetList = require("./tweets.json").tweets,
     app = express();
 
 http.createServer(app).listen(3000);
 
 app.use(express.static(__dirname + "/client"));
 app.use(bodyParser());
+twixer.loadAccounts(accountList);
+twixer.loadTweets(tweetList);
 
 var twitter = new Twitter(twitAuth);
 
@@ -34,6 +38,7 @@ app.post("/submit", function(req,res){
 
 app.post("/votes", function(req,res){
     var votes = twixer.getTweetsForAcct(currUsr);
+    console.log(votes);
     res.json(votes);
 });
 

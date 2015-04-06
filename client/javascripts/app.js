@@ -3,15 +3,18 @@ function main(){
 
     var votes;
 
-    var loadVotes = function(){        
+    var loadVotes = function(){
+        console.log("loading votes");
         $(".vote-queue").empty();
         $(".voted").empty();
         $(".tweets").empty();
+        
+        console.log("tweet");
         $.post("votes", function(res){
             var toVote = res.toVote,
                 voted = res.voted;
             toVote.forEach(function(tweet){
-                console.log(tweet.text);
+                console.log("tweet");
                 $(".vote-queue").append(createTweetHTML(tweet.text));
             });
 
