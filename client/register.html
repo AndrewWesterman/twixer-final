@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico"> -->
+    <link rel="icon" href="../../favicon.ico">
 
-    <title>Twixer | Login page</title>
+    <title>Twixer | Register page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
@@ -34,20 +34,20 @@
 
     <div class="container">
 
-      <div class="form-signin" id="twiter_login">
-        <h2 class="form-signin-heading">Please sign in.</span></h2>
-        <input id="inputEmail" placeholder="Enter email" class="form-control"></input>
-        <input id="inputPassword" placeholder="Enter password" class="form-control" type="password"></input>
-        <button id="login" class="btn btn-lg btn-primary btn-block">Sign In</button>
-        <!--a class="btn btn-lg btn-primary btn-block" id="register_link" href="#">Register</a-->
-      </div>
+      <form class="form-signin" id="twiiter_register" method="post" action="">
+        <h2 class="form-signin-heading">Please Register.</span></h2>
+        <input name="name"  id="name" type="text"  class="form-control" placeholder="Name" required autofocus>
+        <input name="email" type="email" id="email" class="form-control" placeholder="Email address" required>
+        <input name="password" id="password" type="password"   class="form-control" placeholder="Password" required autofocus>
+        <input name="bio" type="text" id="bio" class="form-control" placeholder="Bio" required>
+
+        <button class="btn btn-lg btn-primary btn-block" id="register" type="submit">Register</button>
+      </form>
 
     </div> <!-- /container -->
   </body>
 
   <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-  <!--script src="js/app_twixer.js"></script-->
-  <!-- Bootstrap core js -->
-  <script src="/javascripts/bootstrap.js"></script>
-  <script src="/javascripts/login.js"></script>
+  <script src="javascripts/bootstrap.js"></script>
+  <script src="javascripts/login.js"></script>
 </html>

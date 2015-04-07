@@ -17,6 +17,26 @@ var main = function(){
             alert("Please enter a username and password");
         }               
     });
+    
+
+    $("#register_link").on("click", function(event){
+        event.preventDefault();
+        window.location = window.location+"register.html";
+                           
+    });
+
+    $("#register").on("click", function(event){
+        event.preventDefault();
+        var name = $("#name").val(),
+            email = $("#email").val(),
+            password= $("#password").val(),
+            bio =$("#bio").val();
+            $.post("register", {user: email,pass:password}, function(res){
+                console.log(res);
+            }); 
+                           
+    });
+
 };
 
 $(document).ready(main);
