@@ -35,6 +35,11 @@ app.post("/login", function(req, res){
     }
 });
 
+app.post("/logout", function(req,res){
+    req.session.destroy();
+    res.send("/");
+});
+
 app.post("/user", function(req,res){
     res.send(userSesh.user);
 });

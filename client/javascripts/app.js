@@ -46,6 +46,12 @@ function main(){
         
     });
 
+    $("#logout").on("click", function(){
+        $.post("logout", function(res){
+            window.location = res;
+        });
+    });
+
     //Event handler for yes votes
     var upvoteClick = function(){
         var $tweet = $(this).parent(),
