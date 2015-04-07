@@ -50,7 +50,7 @@ function main(){
     var upvoteClick = function(){
         var $tweet = $(this).parent(),
             text = $tweet.find("span").text();
-        username = $("#username").text();
+        var username = $("#username").text();
         $.post("yes",{ user: username, tweet: text });
         loadVotes();
     };
@@ -58,7 +58,7 @@ function main(){
     var downvoteClick = function(){
         var $tweet = $(this).parent(),
             text = $tweet.find("span").text();
-        username = $("#username").text();
+        var username = $("#username").text();
         $.post("no",{ user: username, tweet: text });
         loadVotes();
     };
