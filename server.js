@@ -28,6 +28,7 @@ app.post("/login", function(req, res){
     userSesh = req.session;
     if(twixer.validAccount(loginInfo)){
         console.log("login success!");
+        //console.log(accountList);
         userSesh.user =loginInfo.user;
         res.json({valid: true});
     } else {
@@ -69,4 +70,11 @@ app.post("/post", function(req,res){
     });
 });
 
+/*--changed-*/
+app.post('/register',function(req,res){
+    accountList.push(req.body)
+    console.log(accountList);
+});
+
+/*--changed-*/
 console.log("Server listening on http://localhost:3000");
