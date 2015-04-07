@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var express = require("express"),
+    session = require("express-session"),
     http = require("http"),
     currUsr,
     twixer = require("./voting.js"),
@@ -14,18 +15,20 @@ var express = require("express"),
 http.createServer(app).listen(3000);
 
 app.use(express.static(__dirname + "/client"));
+app.use(session({secret: "qwertyuiop"}));
 app.use(bodyParser());
 twixer.loadAccounts(accountList);
 twixer.loadTweets(tweetList);
 
 var twitter = new Twitter(twitAuth);
-
+var userSesh;
 
 app.post("/login", function(req, res){
     var loginInfo = req.body;
+    userSesh = req.session;
     if(twixer.validAccount(loginInfo)){
         console.log("login success!");
-        currUsr = loginInfo.user;
+        userSesh.user =loginInfo.user;
         res.json({valid: true});
     } else {
         res.json({valid: false});
@@ -33,7 +36,7 @@ app.post("/login", function(req, res){
 });
 
 app.post("/user", function(req,res){
-    res.send(currUsr);
+    res.send(userSesh.user);
 });
 
 app.post("/submit", function(req,res){
@@ -41,18 +44,18 @@ app.post("/submit", function(req,res){
     twixer.createTweet(submit);
 });
 
-app.post("/votes", function(req,res){
-    var votes = twixer.getTweetsForAcct(currUsr);
-    res.json(votes);
+app.post("/votes", function(req,res){    
+    var votes = twixer.getTweetsForAcct(userSesh.user);
+    res.json(votes);    
 });
 
 app.post("/yes",function(req,res){
-    var usrVote = { user: currUsr, vote: 1, tweet: req.body.tweet };
+    var usrVote = { user: req.body.user, vote: 1, tweet: req.body.tweet };
     twixer.processVote(usrVote);
 });
 
 app.post("/no",function(req,res){
-    var usrVote = { user: currUsr, vote: 0, tweet: req.body.tweet };
+    var usrVote = { user: req.body.user, vote: 0, tweet: req.body.tweet };
     twixer.processVote(usrVote);
 });
 

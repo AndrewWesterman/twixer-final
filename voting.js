@@ -1,8 +1,7 @@
 
 
 var accts = [],
-    tweets = [],
-    acctNum = 0;
+    tweets = [];
 
 function loadAccounts(acctList){
     acctList.forEach(function(acct){
@@ -31,6 +30,11 @@ function validAccount(loginInfo){
         }
     }
     return valid;
+}
+
+//tests if the tweet has timed out, and if so deletes it
+function timedOut(tweet){
+
 }
 
 //Creates tweet object and puts it in each users vote queue

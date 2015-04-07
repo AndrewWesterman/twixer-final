@@ -50,17 +50,16 @@ function main(){
     var upvoteClick = function(){
         var $tweet = $(this).parent(),
             text = $tweet.find("span").text();
-
-        $.post("yes",{ tweet: text });
+        username = $("#username").text();
+        $.post("yes",{ user: username, tweet: text });
         loadVotes();
     };
 
-    // //Event handler for no votes
     var downvoteClick = function(){
         var $tweet = $(this).parent(),
             text = $tweet.find("span").text();
-
-        $.post("no",{ tweet: text });
+        username = $("#username").text();
+        $.post("no",{ user: username, tweet: text });
         loadVotes();
     };
 
