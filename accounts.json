@@ -7,13 +7,13 @@
             "toVote": []
         },
         {
-            "user": "acct2",
+            "user": "acct2@mail.com",
             "pass": "pass2",
             "voted": [],
             "toVote": []
         },
         {
-            "user": "acct3",
+            "user": "acct3@mail.com",
             "pass": "pass3",
             "voted": [],
             "toVote": []

@@ -1,8 +1,6 @@
 function main(){
     "use strict";
 
-    var votes;
-
     var loadVotes = function(){
         $(".vote-queue").empty();
         $(".voted").empty();
@@ -28,11 +26,13 @@ function main(){
         });
     };
 
+    //Load user custom user data on refresh
     $.post("user", function(res){
         $("#username").text(res);
     });
     loadVotes();
 
+    //handler for tweet submission
     $("#submit").on("click", function(){
         var tweetText = $("#tweet").val();
         if(tweetText.length > 140){
@@ -46,6 +46,7 @@ function main(){
         
     });
 
+    //handler for logout button
     $("#logout").on("click", function(){
         $.post("logout", function(res){
             window.location = res;
@@ -61,6 +62,7 @@ function main(){
         loadVotes();
     };
 
+    //Event handler for no votes
     var downvoteClick = function(){
         var $tweet = $(this).parent(),
             text = $tweet.find("span").text();
@@ -69,6 +71,7 @@ function main(){
         loadVotes();
     };
 
+    // Tells server to post a tweet that is done being voted on
     function doneVoting(tweet){        
         if(tweet.status === "post"){
             console.log("posting to twitter");
@@ -76,7 +79,7 @@ function main(){
         }
     }
 
-    // //Prepares and return a tweet html object
+    // Prepares and return a tweet html object
     function createTweetHTML(text){
         var $tweet = $("<div>").addClass("tweet-obj"),
             $text = $("<span><table><tr><td>").text(text),

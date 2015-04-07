@@ -3,6 +3,7 @@
 var accts = [],
     tweets = [];
 
+//loads preset accounts from json file
 function loadAccounts(acctList){
     acctList.forEach(function(acct){
         console.log("Loading account: "+acct.user);
@@ -10,6 +11,7 @@ function loadAccounts(acctList){
     });
 }
 
+//loads preset tweets from json file
 function loadTweets(tweetList){
     tweetList.forEach(function(tweet){
         console.log("Loading tweet: "+tweet);
@@ -17,6 +19,7 @@ function loadTweets(tweetList){
     });
 }
 
+// returns true if the login info matches an existing account
 function validAccount(loginInfo){
     var user = loginInfo.user,
         pass = loginInfo.pass,
@@ -72,6 +75,7 @@ function getTweetsForAcct(acctName){
     return voteQueues;
 }
 
+//Processes a yes or no vote from user
 function processVote(usrVote){
     var user = usrVote.user,
         vote = usrVote.vote,
@@ -88,6 +92,7 @@ function processVote(usrVote){
     });
 }
 
+//removes the given tweet from all data stores
 function purgeTweet(tweet){
     //remove the tweet from the voting pool of all accounts
     accts.forEach(function(acct){
@@ -99,6 +104,7 @@ function purgeTweet(tweet){
 
 }
 
+//returns the current tweet vote tally
 function getTally(){
     var yay,
         nay,
